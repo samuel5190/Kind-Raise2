@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./login.css";
+import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import { BsEye, BsEyeSlash } from "react-icons/bs";
 import logo from '../../assets/logo.svg';
