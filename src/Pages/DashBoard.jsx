@@ -14,6 +14,8 @@ import {
 } from "recharts";
 import { BiMoney } from "react-icons/bi";
 import { BsMegaphone, BsPeople } from "react-icons/bs";
+import { AiOutlineExport } from "react-icons/ai";
+import School from '../assets/School.svg'
 // import { Bar } from 'rechart';
 // import { BarChart, ResponsiveContainer,Bar, XAxis, YAxis, Tooltip } from 'recharts';
 
@@ -162,7 +164,26 @@ const DashBoard = () => {
                 </BarChart>
               </ResponsiveContainer>
             </div>
-            <div className="barChart">
+            <div className="fundraisingDashboardBox">
+              <div className="fundraiseDashHead">
+                <h3>Your Fundraising</h3>
+                <div><AiOutlineExport size={20} cursor="pointer" /></div>
+              </div>
+              <div className="fundraiseDashBody">
+                <div className="fundRaiseDashCard">
+                  <div className="fundraiseFrameBox">
+                    <div className="fundRaiseFrameImgBox">
+                      <img src={School} alt="" />
+                    </div>
+                  </div>
+                  <div className="fundRaiseTrackBox">hello</div>
+                </div>
+                <div className="fundRaiseDashCard">
+                  hello
+                </div>
+              </div>
+            </div>
+            {/* <div className="barChart">
               <ResponsiveContainer width="100%" height="100%">
                 <AreaChart width={500} height={400} data={products}>
                   <XAxis dataKey="name" />
@@ -182,16 +203,9 @@ const DashBoard = () => {
                     fill="#42ce55"
                     dataKey="receiver"
                   />
-
-                  {/* <Area
-                    type="monotone"
-                    stroke="#23dfe9"
-                    fill="#5199c9"
-                    dataKey="hidden"
-                  /> */}
                 </AreaChart>
               </ResponsiveContainer>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

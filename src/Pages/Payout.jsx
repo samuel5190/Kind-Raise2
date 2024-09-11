@@ -9,7 +9,9 @@ const Payout = () => {
       <div className='payoutContent'>
         <div className='payoutBankDetails'>
           <div className='payoutBankBox'>
-            <div className='payoutBankIcon'><BsBank size={20}/></div>
+            <div className='payoutBankIcon'>
+              <BsBank size={20}/>
+            </div>
             <div className='payoutAccDetailsBox'>
               <h2>Bank Account</h2>
               <div>Connect a bank account to begin withdrawing funds.</div>

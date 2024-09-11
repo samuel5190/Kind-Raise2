@@ -138,11 +138,73 @@
   /* flex-wrap: wrap; */
 }
 
+.fundraisingDashboardBox {
+  background-color: white;
+  height: 300px;
+  width: 700px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 10px;
+}
+
+.fundraiseDashHead {
+  height: 50px;
+  width: 100%;
+  /* background-color: rgb(88, 49, 49); */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fundraiseDashBody {
+  height: 250px;
+  width: 100%;
+  /* background-color: rgb(123, 123, 151); */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fundRaiseTrackBox {
+  height: 30%;
+  width: 100%;
+  background-color: green;
+}
+
+.fundraiseFrameBox {
+  height: 70%;
+  width: 100%;
+  background-color: blue;
+}
+
+.fundRaiseFrameImgBox {
+  height: 80px;
+  width: 80px;
+  border-radius: 10px;
+  background-color: aqua;
+
+  img {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.fundRaiseDashCard {
+  height: 115px;
+  width: 100%;
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+}
+
 .barChart {
   height: 300px;
   width: 100%;
   /* min-width: 300px; */
   background-color: white;
+  /* background-color: black; */
   border-radius: 10px;
 }
 
