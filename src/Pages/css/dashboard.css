@@ -163,27 +163,30 @@
   width: 100%;
   /* background-color: rgb(123, 123, 151); */
   display: flex;
+  border: 1px solid lightgray;
   flex-direction: column;
   gap: 10px;
 }
 
 .fundRaiseTrackBox {
-  height: 30%;
+  height: 35%;
   width: 100%;
-  background-color: green;
+  /* background-color: green; */
 }
 
 .fundraiseFrameBox {
   height: 70%;
   width: 100%;
-  background-color: blue;
+  /* background-color: blue; */
+  display: flex;
+  gap: 10px;
 }
 
 .fundRaiseFrameImgBox {
   height: 80px;
   width: 80px;
   border-radius: 10px;
-  background-color: aqua;
+  /* background-color: aqua; */
 
   img {
     height: 100%;
@@ -191,12 +194,47 @@
   }
 }
 
+.fundRaiseFrameText {
+  height: 80px;
+  max-width: 300px;
+  width: 100%;
+  /* background-color: aqua; */
+}
+
+.trackBar {
+  height: 15px;
+  width: 100%;
+  background-color: greenyellow;
+}
+
 .fundRaiseDashCard {
-  height: 115px;
+  height: 125px;
   width: 100%;
   /* background-color: red; */
   display: flex;
   flex-direction: column;
+}
+
+.fundraiseAmountTrack {
+ display: flex;
+ justify-content: space-between;
+ align-items: center; 
+
+ span {
+  color: gray;
+  font-size: 14px;
+ }
+}
+
+.recentDonorsHistory {
+  height: 350px;
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid lightgray;
+  display: flex;
+  /* flex-direction: column; */
+  gap: 10px;
 }
 
 .barChart {

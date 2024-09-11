@@ -147,6 +147,7 @@ const DashBoard = () => {
             <div className="dashboardSmallCard">hello</div>
             <div className="dashboardSmallCard">hello</div> */}
           </div>
+
           <div className="dashBoardLowerCard">
             <div className="barChart">
               <ResponsiveContainer width="100%" height="100%">
@@ -175,37 +176,42 @@ const DashBoard = () => {
                     <div className="fundRaiseFrameImgBox">
                       <img src={School} alt="" />
                     </div>
+                    <div className="fundRaiseFrameText">
+                      Sponsor 5 Children in Nigeria Get Back to School
+                    </div>
                   </div>
-                  <div className="fundRaiseTrackBox">hello</div>
+                  <div className="fundRaiseTrackBox">
+                    <div className="trackBar"></div>
+                    <div className="fundraiseAmountTrack">
+                      <div>₦100,450/<span>150,000</span></div>
+                      <div>69% funded</div>
+                    </div>
+                  </div>
                 </div>
                 <div className="fundRaiseDashCard">
-                  hello
+                  <div className="fundraiseFrameBox">
+                    <div className="fundRaiseFrameImgBox">
+                      <img src={School} alt="" />
+                    </div>
+                    <div className="fundRaiseFrameText">
+                      Sponsor 5 Children in Nigeria Get Back to School
+                    </div>
+                  </div>
+                  <div className="fundRaiseTrackBox">
+                    <div className="trackBar"></div>
+                    <div className="fundraiseAmountTrack">
+                      <div>₦100,450/<span>150,000</span></div>
+                      <div>69% funded</div>
+                    </div>
+                  </div>
                 </div>
+                
               </div>
             </div>
-            {/* <div className="barChart">
-              <ResponsiveContainer width="100%" height="100%">
-                <AreaChart width={500} height={400} data={products}>
-                  <XAxis dataKey="name" />
-                  <YAxis />
-                  <Tooltip />
-                  <Legend />
-                  <CartesianGrid strokeDasharray="5 5" />
-                  <Area
-                    type="monotone"
-                    stroke="#2563eb"
-                    fill="#74d4c8"
-                    dataKey="donor"
-                  />
-                  <Area
-                    type="monotone"
-                    stroke="#18ff37"
-                    fill="#42ce55"
-                    dataKey="receiver"
-                  />
-                </AreaChart>
-              </ResponsiveContainer>
-            </div> */}
+          </div>
+
+          <div className="recentDonorsHistory">
+            hello
           </div>
         </div>
       </div>
