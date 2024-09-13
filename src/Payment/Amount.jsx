@@ -3,8 +3,9 @@ import './amount.css'
 import { useNavigate } from 'react-router-dom'
 import Tree from '../assets/Tree.svg'
 
-const Amount = ({setActiveComponent,setPay}) => {
+const Amount = ({setActiveComponent,setPay,setAmount}) => {
   const Nav = useNavigate()
+  
   return (
     <div className='amountBody'>
       <div className='amountHeader'>
@@ -14,7 +15,7 @@ const Amount = ({setActiveComponent,setPay}) => {
       <div className='amountWrapper'>
         <div className='amountAmount'>
           <div className='inputBox'>
-            ₦ <input type="text" />
+            ₦ <input type="text" onChange={(e)=>setAmount(e.target.value)}/>
           </div>
           <button onClick={()=>setActiveComponent("B")}>continue</button>
         </div>

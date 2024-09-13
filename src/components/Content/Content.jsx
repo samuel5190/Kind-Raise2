@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './content.css'
 import { FcCancel } from 'react-icons/fc';
 
-const Content = ({setTitle}) => {
+const Content = ({setTitle,setSubTitle,setStory,setPhoto}) => {
   const [post, setPost] = useState();
   // const [word, setWord] = useState(setTitle);
 
@@ -10,8 +10,8 @@ const Content = ({setTitle}) => {
     const file = e.target.files[0];
     const img = URL.createObjectURL(file);
     setPost(img);
+    setPhoto(img)
   };
-
 
 
   return (
@@ -30,7 +30,7 @@ const Content = ({setTitle}) => {
           </div>
           <div className='titleInput'>
             Subtitle
-            <input type="text" />
+            <input type="text" onChange={(e)=>setSubTitle(e.target.value)}/>
           </div>
         </div>
       </div>
@@ -46,7 +46,7 @@ const Content = ({setTitle}) => {
               Story<span>*</span>
             </div>
             {/* <input type="text" /> */}
-            <textarea name="" id=""></textarea>
+            <textarea name="" id="" onChange={(e)=>setStory(e.target.value)}></textarea>
           </div>
         </div>
       </div>

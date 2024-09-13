@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./css/campaign.css";
 import { BiFilter, BiSearch } from "react-icons/bi";
 import { CgMenu } from "react-icons/cg";
 import { useNavigate } from "react-router-dom";
 import { VscKebabVertical } from "react-icons/vsc";
+// import Table from "../components/Table/Table";
 import Table from "../components/Table/Table";
 
 const Campaign = () => {
-  const Nav = useNavigate()
+  const Nav = useNavigate();
   const campaigns = [
     {
       name: "Root of Hope",
@@ -38,6 +39,9 @@ const Campaign = () => {
       status: "Active",
     },
   ];
+  const [isOpen, setIsOpen] = useState(false);
+  const [search, setSearch] = useState("")
+  // console.log(search);
 
   const [data, setData] = useState([
     {
@@ -61,6 +65,16 @@ const Campaign = () => {
       id: 1,
     },
   ]);
+  // console.log(isOpen)
+
+  //CREATE: create a search function for data
+  //NOTE: search function
+
+  const searchFunction=()=>{
+    setData(data.filter(search))
+  }
+
+
   return (
     <div className="campaignBody">
       <h2 className="pageName">Campaign</h2>
@@ -69,19 +83,24 @@ const Campaign = () => {
           <div className="SearchSide">
             <div className="searchBox">
               <BiSearch color="gray" />
-              <input type="text" placeholder="Search" />
+              <input type="text" placeholder="Search" onChange={(e)=>setSearch(e.target.value)}/>
             </div>
             <div className="filterIcon">
               <BiFilter size={17} />
             </div>
           </div>
           <div>
-            <button className="campaignBtn" onClick={()=>Nav('/campaign/create.campaign') }>New Campaign</button>
+            <button
+              className="campaignBtn"
+              onClick={() => Nav("/campaign/create.campaign")}
+            >
+              New Campaign
+            </button>
           </div>
         </div>
 
-        <div className='campaignTable'>
-          <div className='tableHeader'>
+        <div className="campaignTable">
+          <div className="tableHeader">
             <div className="tableHeadName tb">Campaign</div>
             <div className="tableHeadDetails1 tb">
               <div>Created</div>
@@ -90,25 +109,37 @@ const Campaign = () => {
             </div>
             <div className="tableHeadStatus1 tb">
               <div>Status</div>
-              <div className='emp'></div>
+              <div className="emp"></div>
             </div>
           </div>
 
-          <div className='createdCampaigns'>
-            <div className='CampaignName tb'>hi</div>
-            <div className='tableHeadDetails tb'>
+          <div className="createdCampaigns">
+            <div className="CampaignName tb">hi</div>
+            <div className="tableHeadDetails tb">
               <div>hey</div>
               <div>hello</div>
               <div>hello</div>
             </div>
-            <div className='tableHeadStatus tb'>
+            <div className="tableHeadStatus tb">
               <div>hello</div>
-              <div className='campaignMenuSec'><span><VscKebabVertical /></span></div>
+              <div className="campaignMenuSec">
+                <span onMouseEnter={()=>setIsOpen(!isOpen)}>
+                  <VscKebabVertical />
+                </span>
+                {
+                  isOpen ? 
+                <div className="campaignOption" onMouseLeave={()=>setIsOpen(false)}>
+                  <div>Edit</div>
+                  <div onClick={()=>Nav("/fundraising-page")}>View</div>
+                </div>:
+                null
+                }
+              </div>
             </div>
           </div>
         </div>
 
-        <Table/>
+        {/* <Table/> */}
 
         {/* <div className="container">
           <table className="full-width-border">

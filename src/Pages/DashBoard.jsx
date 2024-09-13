@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./css/dashboard.css";
 import {
   Area,
@@ -16,6 +16,7 @@ import { BiMoney } from "react-icons/bi";
 import { BsMegaphone, BsPeople } from "react-icons/bs";
 import { AiOutlineExport } from "react-icons/ai";
 import School from '../assets/School.svg'
+import { useNavigate } from "react-router-dom";
 // import { Bar } from 'rechart';
 // import { BarChart, ResponsiveContainer,Bar, XAxis, YAxis, Tooltip } from 'recharts';
 
@@ -95,10 +96,43 @@ const DashBoard = () => {
     },
   ];
 
+  const [data, setdata] =useState([
+    {
+      amount: 110000,
+      name: "Total Amount",
+      icon: "total",
+      message:''
+    },
+    {
+      amount: 11000,
+      name: "Total Donation",
+      icon: "total",
+      message:''
+    },
+    {
+      amount: 40,
+      name: "Total Donors",
+      icon: "total",
+      message:''
+    },
+    {
+      amount: 12,
+      name: "Active Campaigns",
+      icon: "total",
+      message:''
+    },
+  ])
+
+  const Nav = useNavigate()
+
   return (
     <div className="dashboardBody">
       <div>
-        <h2 className="pageName">Home</h2>
+        <div className="dashNameBtnHolder">
+
+          <h2 className="pageName">Home</h2>
+          <button className="campaignBtn dash" onClick={()=>Nav('/campaign/create.campaign') }>New Campaign</button>
+        </div>
         <div className="dashboardContent">
           <div className="dashBoardUpperCard">
             <div className="dashboardSmallCard">
@@ -165,6 +199,7 @@ const DashBoard = () => {
                 </BarChart>
               </ResponsiveContainer>
             </div>
+            
             <div className="fundraisingDashboardBox">
               <div className="fundraiseDashHead">
                 <h3>Your Fundraising</h3>
@@ -211,7 +246,20 @@ const DashBoard = () => {
           </div>
 
           <div className="recentDonorsHistory">
-            hello
+            <div className="donationHistoryPersonBox">
+              <div className="donorHistoryHead">Donation history</div>
+              <div className="donorHistoryPeople">
+                <div className="donorPeople">
+                  hello
+                </div>
+                <div className="donorPeople">
+                  hello
+                </div>
+              </div>
+            </div>
+            <div className="donationHistoryPersonShow">
+              hello
+            </div>
           </div>
         </div>
       </div>

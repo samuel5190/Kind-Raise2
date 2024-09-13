@@ -1,7 +1,7 @@
 import React from "react";
 import "./goal.css";
 
-const Goal = () => {
+const Goal = ({setAmount}) => {
   return (
     <div className="goalBody">
       <div className="goalTitleBox">
@@ -11,10 +11,10 @@ const Goal = () => {
       <div className="goalInputBox">
         <div className="goalInput">
           <div>
-            Title<span>*</span>
+            Amount<span>*</span>
           </div>
           
-          <div className="goalInputContainer">₦<input type="text" onChange={(e) => setTitle(e.target.value)} /></div>
+          <div className="goalInputContainer">₦<input type="text" onChange={(e)=>setAmount(e.target.value)}/></div>
           <div className="goalFirstText">You keep the money you raise, Regardless of whether you hit your goal.</div>
         </div>
         <div className="goalDateBox">

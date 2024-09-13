@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./share.css";
 import { BiCopy } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
@@ -8,12 +8,24 @@ import 'animate.css';
 
 import { QRCodeSVG } from "qrcode.react";
 
-const Share = () => {
+const Share = ({setActiveComponent,setEv,ev,campaignData}) => {
   const Nav = useNavigate()
   const [num, setNum] = useState();
-  const ev = Date.now();
-  const [link, setLink] = useState(`https://example.com/${ev}`);
+  const [link, setLink] = useState();
   const qrRef = useRef();
+  
+  useEffect(()=>{
+    setNum(Date.now())
+  },[])
+  // console.log("num",num)
+  // setEv(num)
+  useEffect(()=>{
+    setEv(num)
+    setLink(`https://kindraise.vercel.app/fundraising-page/${num}`)
+  },[num])
+  // console.log("ev",ev)
+  
+
 
 
   const handlePrint = () => {  
@@ -75,6 +87,14 @@ const Share = () => {
   };
   // console.log(num);
 
+  const Back=()=>{
+    console.log(campaignData)
+    setActiveComponent("A")
+    setTimeout(() => {
+      Nav('/campaign')
+    }, 0o050);
+  }
+
   return (
     <div className="shareBody">
       <div className="shareTitleBox">
@@ -118,7 +138,7 @@ const Share = () => {
       </div>
 
       <div className="shareBtnBox">
-        <button className="publishBtn"onClick={()=>Nav('/fundraising-page')}>Publish</button>
+        <button className="publishBtn"onClick={Back}>Publish</button>
       </div>
     </div>
   );

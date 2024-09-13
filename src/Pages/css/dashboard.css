@@ -9,6 +9,19 @@
   margin-top: 20px;
   margin-bottom: 50px;
 }
+.dash {
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.dashNameBtnHolder {
+  /* background-color: red; */
+  width: 100%;
+  display: flex;
+  height: max-content;
+  /* align-items: center; */
+  justify-content: space-between;
+}
 
 .dashboardContent {
   height: max-content;
@@ -140,10 +153,13 @@
 
 .fundraisingDashboardBox {
   background-color: white;
-  height: 300px;
-  width: 700px;
+  /* background-color: green; */
+  height: max-content;
+  width: 100%;
+  max-width: 700px;
   border-radius: 10px;
   display: flex;
+  border: 1px solid lightgray;
   flex-direction: column;
   padding: 10px;
   gap: 10px;
@@ -159,11 +175,10 @@
 }
 
 .fundraiseDashBody {
-  height: 250px;
+  height: max-content;
   width: 100%;
   /* background-color: rgb(123, 123, 151); */
   display: flex;
-  border: 1px solid lightgray;
   flex-direction: column;
   gap: 10px;
 }
@@ -227,21 +242,69 @@
 }
 
 .recentDonorsHistory {
-  height: 350px;
+  height: max-content;
   width: 100%;
   background-color: white;
   border-radius: 10px;
   border: 1px solid lightgray;
   display: flex;
-  /* flex-direction: column; */
-  gap: 10px;
+  border-radius: 10px;
+  flex-wrap: wrap;
+  /* gap: 10px; */
+}
+
+.donationHistoryPersonBox {
+  height: 300px;
+  /* background-color: aqua; */
+  width: 55%;
+  /* width: 400px; */
+  border-right: 1px solid lightgray;
+}
+
+.donorHistoryHead {
+  height: 15%;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  /* background-color: red; */
+}
+
+.donorHistoryPeople {
+  height: 85%;
+  /* background-color: green; */
+  display: flex;
+  overflow-y: auto;
+  flex-direction: column;
+  /* scrollbar-width: 5px; */
+}
+
+.donorPeople {
+  width: 100%;
+  cursor: pointer;
+  border-bottom: 1px solid lightgray;
+  background-color: rgb(234, 234, 234);
+  min-height: 90px;
+  max-height: 90px;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: rgb(188, 188, 188);
+  }
+}
+
+.donationHistoryPersonShow {
+  height: 300px;
+  /* background-color: red; */
+  width: 45%;
+  padding: 20px;
 }
 
 .barChart {
-  height: 300px;
+  height: 340px;
   width: 100%;
   /* min-width: 300px; */
   background-color: white;
+  border: 1px solid lightgray;
   /* background-color: black; */
   border-radius: 10px;
 }
@@ -249,5 +312,13 @@
 @media screen and (max-width:880px) {
   .dashBoardLowerCard {
     flex-direction: column;
+  }
+
+  .recentDonorsHistory {
+    flex-direction: column;
+
+    div {
+      width: 100%;
+    }
   }
 }

@@ -10,10 +10,28 @@ const CreateCampaign = () => {
   const Nav = useNavigate()
   // useEffect(()=>{
   //   setActiveHead('content')
-  //   // fetch data from local storage and set state
+    // fetch data from local storage and set state
   // },[])
   const [title, setTitle] = useState()
-  // console.log(Number(title))
+  const [subTitle, setSubTitle] = useState()
+  const [story, setStory] = useState()
+  const [photo, setPhoto] = useState()
+  const [amount, setAmount] = useState()
+  const [endDate, setEndDate] = useState()
+  const [ev, setEv] = useState()
+
+  const campaignData = {
+    title,
+    subTitle,
+    story,
+    photo,
+    amount,
+    endDate,
+    ev
+  }
+  // console.log(campaignData)
+
+  
 
   const [activeComponent, setActiveComponent] = useLocalStorage('A');
   const [activeHead, setActiveHead] = useLocalStorage('A')
@@ -30,11 +48,11 @@ const CreateCampaign = () => {
   const renderComponent = () => {  
     switch (activeComponent) {  
         case 'A':  
-            return <Content setTitle={setTitle}/>;  
+            return <Content setTitle={setTitle} setSubTitle={setSubTitle} setStory={setStory} setPhoto={setPhoto}/>;  
         case 'B':  
-            return <Goal />;  
+            return <Goal setAmount={setAmount} setEndDate={setEndDate}/>;  
         case 'C':  
-            return <Share />;  
+            return <Share campaignData={campaignData} ev={ev} setEv={setEv} setActiveComponent={setActiveComponent}/>;  
         default:  
             return <Content />;  
     }  

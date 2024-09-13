@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./css/fund.css";
 import FundHeader from "../components/Header/FundHeader";
 import { BsArrowDownShort } from "react-icons/bs";
@@ -9,6 +9,33 @@ import Tree from '../assets/Tree.svg'
 
 const FundraisingPage = () => {
   const [pay, setPay] = useState(false)
+
+  const [amount, setAmount] = useState("")
+  const [amntBtn, setAmntBtn] = useState(false)
+  const [bank, setBank] = useState("")
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [message, setMessage] = useState("")
+
+
+  useEffect(()=>{
+    if (amount.length > 2) {
+      console.log("hello")
+    } else {
+      console.log("not empty message")
+    }
+  },[amount])
+
+  const paymentData = {
+    amount,
+    bank,
+    name,
+    email,
+    message
+  }
+  console.log(paymentData)
+
+
   const donor = [
     {
       name: "Anonymous",
@@ -44,7 +71,7 @@ const FundraisingPage = () => {
     <div className="fundRaiseBody">
       {
         pay ? 
-        <Modal setPay={setPay}/>:
+        <Modal setMessage={setMessage} setEmail={setEmail} setName={setName} setBank={setBank} setAmount={setAmount} setPay={setPay}/>:
         null
       }
       <div className="fund-head">
