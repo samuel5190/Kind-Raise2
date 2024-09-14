@@ -1,6 +1,7 @@
 import React from 'react'
 import './css/payout.css'
 import { BsBank } from "react-icons/bs";
+import PayoutTable from '../components/PayoutTable/PayoutTable';
 
 const Payout = () => {
   return (
@@ -25,7 +26,7 @@ const Payout = () => {
           </div>
         </div>
         <div className='payoutTableBox'>
-          hi
+          <PayoutTable/>
         </div>
       </div>
     </div>

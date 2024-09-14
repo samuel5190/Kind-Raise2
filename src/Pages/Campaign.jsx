@@ -40,40 +40,49 @@ const Campaign = () => {
     },
   ];
   const [isOpen, setIsOpen] = useState(false);
-  const [search, setSearch] = useState("")
+  const [filterToggle, setFilterToggle] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filterStatus, setFilterStatus] = useState("all"); // Filter state
   // console.log(search);
 
-  const [data, setData] = useState([
+  const products = [
     {
-      name: "campaign",
       id: 1,
+      name: "Apple iPhone 13",
+      category: "Electronics",
+      status: "active",
     },
     {
-      name: "donr",
-      id: 1,
+      id: 2,
+      name: "Samsung Galaxy S21",
+      category: "Electronics",
+      status: "active",
     },
+    { id: 3, name: "Sony WH-1000XM4", category: "Audio", status: "active" },
+    { id: 4, name: "Dell XPS 13", category: "Computers", status: "inactive" },
     {
-      name: "tree of hope",
-      id: 1,
+      id: 5,
+      name: "Apple MacBook Pro",
+      category: "Computers",
+      status: "inactive",
     },
-    {
-      name: "gracious land",
-      id: 1,
-    },
-    {
-      name: "hope little",
-      id: 1,
-    },
-  ]);
+  ];
+
+  let filteredProducts = products.filter((product) =>
+    product.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const getFilteredProducts = () => {
+    return products.filter((product) => {
+      const matchesStatus = filterStatus === "all" || product.status === filterStatus;
+      const matchesSearchTerm = product.name.toLowerCase().includes(searchTerm.toLowerCase());
+      return matchesStatus && matchesSearchTerm;
+    });
+  };
+
+  // Get filtered products
+  filteredProducts = getFilteredProducts();
   // console.log(isOpen)
-
-  //CREATE: create a search function for data
-  //NOTE: search function
-
-  const searchFunction=()=>{
-    setData(data.filter(search))
-  }
-
 
   return (
     <div className="campaignBody">
@@ -83,10 +92,25 @@ const Campaign = () => {
           <div className="SearchSide">
             <div className="searchBox">
               <BiSearch color="gray" />
-              <input type="text" placeholder="Search" onChange={(e)=>setSearch(e.target.value)}/>
+              <input
+                type="text"
+                placeholder="Search"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
             </div>
-            <div className="filterIcon">
-              <BiFilter size={17} />
+            <div className="filterContainer">
+              <div className="filterIcon" onClick={()=>setFilterToggle(!filterToggle)}>
+                <BiFilter size={17} />
+              </div>
+              {
+                filterToggle ?
+              <div className="filterBox">
+                <div onClick={()=>setFilterStatus("all")[setFilterToggle(false)]}>All</div>
+                <div onClick={()=>setFilterStatus("active")[setFilterToggle(false)]}>Active</div>
+                <div onClick={()=>setFilterStatus("inactive")[setFilterToggle(false)]}>Inactive</div>
+              </div>:null
+              }
             </div>
           </div>
           <div>
@@ -123,23 +147,32 @@ const Campaign = () => {
             <div className="tableHeadStatus tb">
               <div>hello</div>
               <div className="campaignMenuSec">
-                <span onMouseEnter={()=>setIsOpen(!isOpen)}>
+                <span onClick={() => setIsOpen(!isOpen)}>
                   <VscKebabVertical />
                 </span>
-                {
-                  isOpen ? 
-                <div className="campaignOption" onMouseLeave={()=>setIsOpen(false)}>
-                  <div>Edit</div>
-                  <div onClick={()=>Nav("/fundraising-page")}>View</div>
-                </div>:
-                null
-                }
+                {isOpen ? (
+                  <div
+                    className="campaignOption"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <div>Edit</div>
+                    <div onClick={() => Nav("/fundraising-page")}>View</div>
+                  </div>
+                ) : null}
               </div>
             </div>
           </div>
         </div>
 
-        {/* <Table/> */}
+        <ol>
+          {filteredProducts.map((product) => (
+            <li key={product.id}>
+              {product.name} - {product.category}
+            </li>
+          ))}
+        </ol>
+
+        <Table/>
 
         {/* <div className="container">
           <table className="full-width-border">

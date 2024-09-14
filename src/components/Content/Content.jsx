@@ -8,11 +8,12 @@ const Content = ({setTitle,setSubTitle,setStory,setPhoto}) => {
 
   const showImg = (e) => {
     const file = e.target.files[0];
+    console.log(file)
     const img = URL.createObjectURL(file);
     setPost(img);
     setPhoto(img)
+    console.log(img)
   };
-
 
   return (
     <div className='contentBody'>

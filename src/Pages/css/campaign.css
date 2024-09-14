@@ -67,6 +67,35 @@ tr {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  /* top: 0; */
+}
+
+.filterContainer {
+  /* bottom: 0; */
+  /* right: 0; */
+  position: relative;
+
+}
+
+.filterBox {
+  position: absolute;
+  height: max-content;
+  width: 70px;
+  border-radius: 10px;
+  border: 1px solid lightgray;
+  /* background-color: red; */
+  background-color: white;
+  padding: 5px;
+
+  div {
+    cursor: pointer;
+    padding: 3px;
+    border-radius: 5px;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.156);
+    }
+  }
 }
 
 .campaignBtn {
@@ -246,9 +275,9 @@ tr {
   }
 }
 
-.tableDetails {
+/* .tableDetails {
 
-}
+} */
 
 /* @media screen and (max-width: 428px) {
   .tableHeadDetails {
@@ -285,14 +314,14 @@ tr {
   /* background-color: red; */
 }
 
-.border-style {  
+/* .border-style {   */
   /* border-width: 1px;   */
   /* border-style: solid;    */
   /* border-color: #D1D5DB;  */
   /* padding: 0.5rem;  */
   /* background-color: red;  */
   /* border: none; */
-}  
+/* }   */
 
 .border-bottom {  
   border-bottom-width: 1px; 
