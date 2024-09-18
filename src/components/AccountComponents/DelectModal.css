@@ -25,6 +25,13 @@
   padding-bottom: 20px;
 }
 
+.deleteTextCopy {
+
+  span {
+    font-weight: bolder;
+  }
+}
+
 .deleteModLHead {
   height: 14%;
   /* background-color: aqua; */

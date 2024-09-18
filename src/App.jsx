@@ -26,7 +26,7 @@ const App = () => {
         <Route path="/passwordchange" element={<PasswordChange />} />
         <Route path="/createpassword" element={<CreateNewPassword />} />
         <Route path="/resetpassword" element={<ResetPassword />} />
-        <Route path="/fundraising-page" element={<FundraisingPage />} />
+        <Route path="/fundraising-page/:ev" element={<FundraisingPage />} />
         <Route path="/change-password" element={<ChangePassword/>}/>,
         <Route path="*" element={<div>page not found</div>} />
         <Route
@@ -39,7 +39,7 @@ const App = () => {
             <Route path="/payout" element={<Payout/>}/>,
             <Route path="/account" element={<Account/>}/>,
             <Route path="/campaign/create.campaign" element={<CreateCampaign/>}/>,
-            [['l;ljh.i6yyyyyyyii']]
+            // [['l;ljh.i6yyyyyyyii']]
           ]}
         />
         <Route element={<AdminLayout/>} 

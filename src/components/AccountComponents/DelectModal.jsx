@@ -9,6 +9,7 @@ const DelectModal = ({ setDelectModal }) => {
   const delect = () => {
     if (delectConfirm == "DELETE") {
       setShow(false);
+      alert("This account will be deleted");
     } else {
       setShow(true);
     }
@@ -31,7 +32,7 @@ const DelectModal = ({ setDelectModal }) => {
           Are you want to delete the account linked to your example@gmail.com.
           You will not be able to undo.
         </div>
-        <div>To confirm this, type "DELETE"</div>
+        <div className="deleteTextCopy">To confirm this, type "<span>DELETE</span>"</div>
         <div className="deleteInputBox">
           <input
             type="text"

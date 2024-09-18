@@ -3,6 +3,7 @@ import "./ChangePassword.css";
 import { BsEye, BsEyeSlash } from "react-icons/bs";
 import logo from '../../assets/logo.svg';
 import { useNavigate } from "react-router-dom";
+import { BiArrowBack } from "react-icons/bi";
 
 const ChangePassword = () => {
   const [show, setShow] = useState(true);
@@ -10,8 +11,9 @@ const ChangePassword = () => {
   const Nav = useNavigate()
   return (
     <div className="loginBody">
-      <div className="ChangeLogoSec">
-        <img src={logo} alt="" />
+      <div className="ChangeLogoSec" >
+        <BiArrowBack color="#05BB6D" size={20}/>
+        <img src={logo} alt="" onClick={()=>Nav(-1)}/>
       </div>
       <div className="formSec">
         <div className="formBox">

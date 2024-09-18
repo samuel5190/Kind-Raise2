@@ -1,16 +1,22 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './individualsignup.css'
 import { BsEye, BsEyeSlash } from 'react-icons/bs'
+import toast, { Toaster } from 'react-hot-toast'
+import axios from 'axios'
 
 const IndividualSignup = ({setActiveSignupPage}) => {
   const [show, setShow]= useState(false)
-
   const [toggle, setToggle] = useState(false)
- const [firstName, setFirstName] = useState()
- const [lastName, setLastName] = useState()
- const [email, setEmail] = useState()
- const [nin, setNin] = useState()
- const [password, setPassword] = useState()
+
+ const [firstName, setFirstName] = useState('')
+ const [lastName, setLastName] = useState('')
+ const [email, setEmail] = useState('')
+ const [phoneNumber, setPhoneNumber] = useState('')
+ const [password, setPassword] = useState('')
+ console.log(password)
+
+ const formData = { password,phoneNumber,firstName,lastName,email}
+//  console.log(formData)
 
  const [showPassword, setShowPassword] = useState(true)
  const [passwordCheck, setPasswordCheck] = useState(false)
@@ -40,34 +46,57 @@ const [passwordErrorSymbol, setPasswordErrorSymbol] = useState();
     return /[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]/.test(input);
   };
 
-  const handlePassword = (e) => {
-    const newData  = e.target.value
-    setPassword(newData)
 
-    if (newData.length > 0){
-      setPasswordCheck(true)
-    }if(!containsLowercase(newData)){
-      setPasswordErrorLow(true)
-    }else{
-      setPasswordErrorLow(false)
-    }if(!containsUpperrcase(newData)){
-      setPasswordErrorUpper(true)
-    }else{
-      setPasswordErrorUpper(false)
-    }if(!containsNumber(newData)){
-      setPasswordErrorNumber(true)
-    }else{
-      setPasswordErrorNumber(false)
-    }if(!containsSymbol(newData)){
-      setPasswordErrorSymbol(true)
-    }else{
-      setPasswordErrorSymbol(false)
+  // const handlePassword = (e) => {
+  //   const newData  = e.target.value
+  //   setPassword(newData)
+
+  //   if (newData.length > 0){
+  //     setPasswordCheck(true)
+  //   }if(!containsLowercase(newData)){
+  //     setPasswordErrorLow(true)
+  //   }else{
+  //     setPasswordErrorLow(false)
+  //   }if(!containsUpperrcase(newData)){
+  //     setPasswordErrorUpper(true)
+  //   }else{
+  //     setPasswordErrorUpper(false)
+  //   }if(!containsNumber(newData)){
+  //     setPasswordErrorNumber(true)
+  //   }else{
+  //     setPasswordErrorNumber(false)
+  //   }if(!containsSymbol(newData)){
+  //     setPasswordErrorSymbol(true)
+  //   }else{
+  //     setPasswordErrorSymbol(false)
+  //   }
+  // }
+
+  // const [firstName, setFirstName] = useState("")
+
+  const handleBtn = () => {
+    if (!firstName ||!lastName ||!phoneNumber || !password || !email) {
+      // alert("details is required");
+      toast.error("details is required");
+    } else {
+      const url = "https://kindraise.onrender.com/api/v1/signup";
+      const data = { password,phoneNumber,firstName,lastName,email}
+      axios
+        .post(url, data)
+        .then((res) => {
+          console.log(res?.data?.message);
+          toast.success(res?.data?.message);
+          setActiveSignupPage("D")
+        })
+        .catch((err) => console.log(err));
+      // Nav('/login')
     }
-  }
+  };
 
   
 
   return (
+    <>
     <div className='indSignupBody'>
       <div className='signupLoginBox'>
         Already have an account?<span onClick={()=>Nav('/')}>Sign in</span>
@@ -76,24 +105,24 @@ const [passwordErrorSymbol, setPasswordErrorSymbol] = useState();
         <h1 className='indSignupQusBox'>Tell us about your self</h1>
         <div className='indInputHoldBox'>
           First Name
-          <input type="text" />
+          <input type="text" onChange={(e)=>setFirstName(e.target.value)}/>
         </div>
         <div className='indInputHoldBox'>
           Last Name
-          <input type="text" />
+          <input type="text" onChange={(e)=>setLastName(e.target.value)}/>
         </div>
         <div className='indInputHoldBox'>
           Email Address
-          <input type="text" />
+          <input type="text" onChange={(e)=>setEmail(e.target.value)}/>
         </div>
         <div className='indInputHoldBox'>
-          NIN
-          <input type="text" />
+          Phone Number
+          <input type="text" onChange={(e)=>setPhoneNumber(e.target.value)}/>
         </div>
         <div className='indInputHoldBox'>
           Password
           <div className='signupInputClone'>
-            <input type={show ? 'text': 'password'} onClick={handlePassword}/> 
+            <input type={show ? 'text': 'password'} onChange={(e)=>setPassword(e.target.value)}/> 
             {
               show ? 
               <BsEyeSlash cursor="pointer" onClick={()=>setShow(false)}/>:
@@ -108,15 +137,17 @@ const [passwordErrorSymbol, setPasswordErrorSymbol] = useState();
         <div className='TermsBox'>
           <input type="checkbox" name="" id="" /> I have read and agree to the Terms and Use and Private Policy
         </div>
-        <button className='signupIndCreateBtn' onClick={()=>setActiveSignupPage("D")}>
+        <button className='signupIndCreateBtn' onClick={handleBtn}>
           Create Account
         </button>
         
       </div>
       <div className='mediaSignupLoginBox'>
-        Already have an account?<span onClick={()=>Nav('/')}>Sign in</span>
+        Already have an account?<span onClick={()=>Nav("/")}>Sign in</span>
       </div>
     </div>
+    <Toaster/>
+    </>
   )
 }
 

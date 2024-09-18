@@ -278,6 +278,35 @@
   /* scrollbar-width: 5px; */
 }
 
+.progress-containerDash {  
+  width: 100%; /* w-full */  
+  background-color: #E2E8F0; /* bg-gray-300 */  
+  border-radius: 9999px; /* rounded-full */  
+  height: 15px;  
+} 
+
+.donateBoxMedia {
+  display: none;
+}
+
+
+.progress-barDash {  
+  background-color: #05BB6D; /* bg-blue-600 */  
+  height: 100%; /* h-full */  
+  border-radius: 9999px; /* rounded-full */  
+  transition: width 0.3s ease;  
+} 
+
+.trackBoxDash {
+  height: max-content;
+  width: 100%;
+  /* background-color: blue; */
+}
+.small {
+  height: 15px;
+  /* background-color: red; */
+}
+
 .donorPeople {
   width: 100%;
   cursor: pointer;
@@ -321,4 +350,6 @@
       width: 100%;
     }
   }
+
+  
 }

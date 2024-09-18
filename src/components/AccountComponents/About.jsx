@@ -11,7 +11,7 @@ const About = () => {
         <div className="logoHolderAbout">
           <div className="aboutLogoContainer">H</div>
           <span>
-            <BiEdit />
+            <BiEdit cursor="pointer"/>
           </span>
         </div>
       </div>

@@ -74,6 +74,9 @@ const Content = ({setTitle,setSubTitle,setStory,setPhoto}) => {
           </div>
         </div>
       </div>
+        <div className="SaveBtnBox">
+          <button className="goalSaveBtn">Next</button>
+        </div>
 
       
     </div>

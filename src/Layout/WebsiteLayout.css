@@ -31,7 +31,7 @@
   }
 }
 
-@media screen and (max-width: 428px) {
+@media screen and (max-width: 433px) {
   .sidebar {
     display: none;
   }

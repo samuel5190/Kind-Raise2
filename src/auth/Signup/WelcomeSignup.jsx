@@ -9,25 +9,25 @@ const WelcomeSignup = ({setActiveSignupPage}) => {
 
   const moveBtn=()=>{
 
-    setLoading(!loading)
+    // setLoading(!loading)
     setTimeout(()=>{
-      setLoading(false)
+      // setLoading(false)
       // setActiveSignupPage("A")
-      Nav('/dashboard')
+      Nav('/')
     },3000)
   }
   return (
     <div className='welcomeSignupPage'>
-      {
+      {/* {
         loading ? <Loading/>:null
-      }
+      } */}
       <div className='welcomesignupBox'>
         <h2>Welcome!</h2>
         <div>
-          We are glad to have you, visit your dashboard to get started
+          We are glad to have you, verify your email to continue
         </div>
         <button className='welcomeBtnDashboard' onClick={moveBtn}>
-          Go To Dashboard
+          Verify your email
         </button>
       </div>
     </div>

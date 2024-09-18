@@ -53,9 +53,66 @@
   }
 }
 
-input {
-  outline: none;
+/* From Uiverse.io by arghyaBiswasDev */ 
+/* The switch - the box around the slider */
+.switch {  
+  font-size: 17px; /* You can keep or adjust this */  
+  position: relative;  
+  display: inline-block;  
+  width: 2.5em; /* Reduced width */  
+  height: 1.5em; /* Reduced height */  
+}  
+
+/* Hide default HTML checkbox */  
+.switch input {  
+  opacity: 0;  
+  width: 0;  
+  height: 0;  
+}  
+
+/* The slider */  
+.slider {  
+  position: absolute;  
+  cursor: pointer;  
+  top: 0;  
+  left: 0;  
+  right: 0;  
+  bottom: 0;  
+  background-color: #fff;  
+  border: 1px solid #adb5bd;  
+  transition: .4s;  
+  border-radius: 30px; /* You can keep this or reduce for more concave */  
+}  
+
+.slider:before {  
+  position: absolute;  
+  content: "";  
+  height: 1.2em; /* Reduced height for the slider knob */  
+  width: 1.2em;  /* Reduced width for the slider knob */  
+  border-radius: 50%; /* Make the knob perfectly circular */  
+  left: 0.15em; /* Adjusted left offset for the smaller knob */  
+  bottom: 0.15em; /* Adjusted bottom offset for the smaller knob */  
+  background-color: #adb5bd;  
+  transition: .4s;  
+}  
+
+input:checked + .slider {  
+  background-color: #007bff;  
+  border: 1px solid #007bff;  
+}  
+
+input:focus + .slider {  
+  box-shadow: 0 0 1px #007bff;  
+}  
+
+input:checked + .slider:before {  
+  transform: translateX(1em); /* Adjusted translation for smaller size */  
+  background-color: #fff;  
 }
+
+/* input {
+  outline: none;
+} */
 
 .goalFirstText {
   width: 100%;
@@ -74,6 +131,15 @@ input {
   display: flex;
   align-items: center;
   padding-left: 5px;
+  border: 1px solid lightgray;
+}
+
+.dateInput {
+  height: 40px;
+  /* width: 100px; */
+  border-radius: 10px;
+  outline: none;
+  /* color: lightgray; */
   border: 1px solid lightgray;
 }
 
