@@ -3,10 +3,12 @@ import './individualsignup.css'
 import { BsEye, BsEyeSlash } from 'react-icons/bs'
 import toast, { Toaster } from 'react-hot-toast'
 import axios from 'axios'
+import { useDispatch } from 'react-redux'
 
 const IndividualSignup = ({setActiveSignupPage}) => {
   const [show, setShow]= useState(false)
   const [toggle, setToggle] = useState(false)
+  const dispatch = useDispatch()
 
  const [firstName, setFirstName] = useState('')
  const [lastName, setLastName] = useState('')
@@ -79,6 +81,7 @@ const [passwordErrorSymbol, setPasswordErrorSymbol] = useState();
       // alert("details is required");
       toast.error("details is required");
     } else {
+      setToggle(true)
       const url = "https://kindraise.onrender.com/api/v1/signup";
       const data = { password,phoneNumber,firstName,lastName,email}
       axios
@@ -87,8 +90,13 @@ const [passwordErrorSymbol, setPasswordErrorSymbol] = useState();
           console.log(res?.data?.message);
           toast.success(res?.data?.message);
           setActiveSignupPage("D")
+          setToggle(false)
+
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(err)
+          setToggle(false)
+        });
       // Nav('/login')
     }
   };
@@ -138,7 +146,9 @@ const [passwordErrorSymbol, setPasswordErrorSymbol] = useState();
           <input type="checkbox" name="" id="" /> I have read and agree to the Terms and Use and Private Policy
         </div>
         <button className='signupIndCreateBtn' onClick={handleBtn}>
-          Create Account
+          {
+            toggle? "Loading..." : "Create Account"  // Toggle button text to reflect loading state
+          }
         </button>
         
       </div>

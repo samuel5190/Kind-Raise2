@@ -353,3 +353,57 @@
 
   
 }
+
+
+.contacts-container {  
+  display: flex;  
+  width: 100%;  
+}  
+ 
+
+ 
+
+.contacts-list {  
+  flex: 1;  
+  /* background-color: red; */
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  padding: 20px; /* Adjust as needed */  
+  max-height: 400px; /* Optional: set a max height */  
+  overflow-y: auto; /* Enable scrolling if content is too long */  
+}  
+
+.person-item {  
+  padding: 10px;  
+  border-bottom: 1px solid #ccc;  
+  margin-bottom: 10px;  
+  cursor: pointer;  
+  transition: background-color 0.2s;  
+}  
+
+.person-item:hover {  
+  background-color: #f0f0f0; /* Highlight on hover */  
+}  
+
+.details-container {  
+  width: 300px; /* Adjust width as needed */  
+  padding: 10px;  
+  /* background-color: ; */
+  /* border-left: 1px solid #ccc; Optional: to separate details   */
+}  
+
+.details {  
+  /* background-color: #f9f9f9; Optional: background for details   */
+  padding: 10px;  
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  border-radius: 5px;  
+}
+
+.donationHistoryBox {
+  /* background-color: red; */
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}

@@ -5,7 +5,8 @@ const appSlice = createSlice({
   name: 'app',
   initialState: {
     user: {},
-    token: {}
+    token: '',
+    role:''
   },
   reducers:{
     addUser: (state, {payload})=>{
@@ -13,8 +14,11 @@ const appSlice = createSlice({
     },
     userToken: (state, {payload})=>{
       state.token = payload
-    }
+    },
+    userRole: (state, {payload})=>{
+      state.role = payload
+    },
   }
 });
-export const { addUser, userToken} = appSlice.actions;
+export const { addUser, userToken,userRole} = appSlice.actions;
 export default appSlice.reducer;

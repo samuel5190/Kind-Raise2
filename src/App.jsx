@@ -16,6 +16,7 @@ import FundraisingPage from "./Pages/FundraisingPage";
 import ChangePassword from "./components/AccountComponents/ChangePassword";
 import AdminLayout from "./Admin/AdminLayout/AdminLayout";
 import AdminDashboard from "./Admin/AdminDashboard/AdminDashboard";
+import DonorDetails from "./Pages/DonorDetails";
 
 const App = () => {
   return (
@@ -36,6 +37,7 @@ const App = () => {
             <Route path="/dashboard" element={<DashBoard/>}/>,
             <Route path="/campaign" element={<Campaign/>}/>,
             <Route path="/donor" element={<Track/>}/>,
+            <Route path="/donor/details" element={<DonorDetails/>}/>,
             <Route path="/payout" element={<Payout/>}/>,
             <Route path="/account" element={<Account/>}/>,
             <Route path="/campaign/create.campaign" element={<CreateCampaign/>}/>,

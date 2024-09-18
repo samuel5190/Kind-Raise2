@@ -12,7 +12,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { BiMoney } from "react-icons/bi";
+import { BiMoney, BiSearch } from "react-icons/bi";
 import { BsMegaphone, BsPeople } from "react-icons/bs";
 import { AiOutlineExport } from "react-icons/ai";
 import School from "../assets/School.svg";
@@ -96,6 +96,42 @@ const DashBoard = () => {
     },
   ];
 
+  const [searchTerm, setSearchTerm] = useState(""); // State for search term
+  const [selectedPerson, setSelectedPerson] = useState(null); // State for selected person
+
+  const persons = [
+    {
+      name: "Alice",
+      amount: 25,
+      date: "22/03/2024",
+      campaign: "Save the tree",
+      email: "jacksam@gmail.com",
+      contribution: "1,000",
+      contact_since: "22/03/2024",
+    },
+    {
+      name: "Bob",
+      amount: 30,
+      date: "22/03/2024",
+      campaign: "Save the tree",
+      email: "alice@gmail.com",
+      contribution: "1,000",
+      contact_since: "22/03/2024",
+    },
+    {
+      name: "Charlie",
+      amount: 22,
+      date: "22/03/2024",
+      campaign: "Save the tree",
+      email: "joeDoe@gmail.com",
+      contribution: "1,000",
+      contact_since: "22/03/2024",
+    },
+  ];
+  if (!selectedPerson) {
+    setSelectedPerson(persons[0]);
+  }
+
   const [data, setdata] = useState([
     {
       amount: 110000,
@@ -129,32 +165,39 @@ const DashBoard = () => {
   // const current = 1000;
   const percentage = (1000 / 2000) * 100;
 
+  const RoundedTopBar = (props) => {
+    const { x, y, width, height, radius, fill } = props;
 
-  const RoundedTopBar = (props) => {  
-    const { x, y, width, height, radius, fill } = props;  
-  
-    return (  
-      <g>  
-        {/* Top rounded part of the bar */}  
-        <rect   
-          x={x}  
-          y={y}  
-          width={width}  
-          height={height}  
-          fill={fill}  
-          rx={radius} // Apply rounding to top corners  
-          ry={radius}  
-        />  
-        {/* Bottom straight part of the bar */}  
-        <rect  
-          x={x}  
-          y={y + radius} // Start below the rounded part  
-          width={width}  
-          height={height - radius} // Make it shorter to accommodate the rounded corners  
-          fill={fill}  
-        />  
-      </g>  
-    );  
+    return (
+      <g>
+        {/* Top rounded part of the bar */}
+        <rect
+          x={x}
+          y={y}
+          width={width}
+          height={height}
+          fill={fill}
+          rx={radius} // Apply rounding to top corners
+          ry={radius}
+        />
+        {/* Bottom straight part of the bar */}
+        <rect
+          x={x}
+          y={y + radius} // Start below the rounded part
+          width={width}
+          height={height - radius} // Make it shorter to accommodate the rounded corners
+          fill={fill}
+        />
+      </g>
+    );
+  };
+
+  const filteredPersons = persons.filter((person) =>
+    person.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const handlePersonClick = (person) => {
+    setSelectedPerson(person); // Set the selected person
   };
 
   return (
@@ -228,21 +271,21 @@ const DashBoard = () => {
 
           <div className="dashBoardLowerCard">
             <div className="barChart">
-            <ResponsiveContainer width="100%" height="100%">  
-              <BarChart data={products}>  
-                <XAxis dataKey="name" />  
-                <YAxis />  
-                <Tooltip />  
-                <Bar  
-                  shape={(props) => <RoundedTopBar {...props} radius={15} />} // Use the custom shape  
-                  type="monotone"  
-                  stroke="#0042d1"  
-                  fill="#4d77e1"  
-                  dataKey="donor"  
-                  barSize={20} // Adjust this value to make bars thinner or thicker  
-                />  
-              </BarChart>  
-            </ResponsiveContainer>
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={products}>
+                  <XAxis dataKey="name" />
+                  <YAxis />
+                  <Tooltip />
+                  <Bar
+                    shape={(props) => <RoundedTopBar {...props} radius={15} />} // Use the custom shape
+                    type="monotone"
+                    stroke="#0042d1"
+                    fill="#4d77e1"
+                    dataKey="donor"
+                    barSize={20} // Adjust this value to make bars thinner or thicker
+                  />
+                </BarChart>
+              </ResponsiveContainer>
             </div>
 
             <div className="fundraisingDashboardBox">
@@ -263,7 +306,6 @@ const DashBoard = () => {
                     </div>
                   </div>
                   <div className="fundRaiseTrackBox">
-
                     <div className="trackBoxDash small">
                       <div className="progress-containerDash">
                         <div
@@ -311,7 +353,7 @@ const DashBoard = () => {
             </div>
           </div>
 
-          <div className="recentDonorsHistory">
+          {/* <div className="recentDonorsHistory">
             <div className="donationHistoryPersonBox">
               <div className="donorHistoryHead">Donation history</div>
               <div className="donorHistoryPeople">
@@ -320,6 +362,52 @@ const DashBoard = () => {
               </div>
             </div>
             <div className="donationHistoryPersonShow">hello</div>
+          </div> */}
+          <div className="contacts-container">
+            {/* <div className="transactionSearchSide">  
+        <div className="searchBox">  
+          <BiSearch color="gray" />  
+          <input  
+            type="text"  
+            placeholder="Search by name"  
+            value={searchTerm} // Bind input value to searchTerm state  
+            onChange={(e) => setSearchTerm(e.target.value)} // Update search term on change  
+          />  
+        </div>  
+      </div>   */}
+      <div className="ca">
+
+            <div className="contacts-list">
+              {filteredPersons.map((person, index) => (
+                <div
+                  key={index}
+                  className="person-item"
+                  onClick={() => handlePersonClick(person)}
+                >
+                  {person.name}
+                </div>
+              ))}
+            </div>
+            <div className="details-container">
+              {selectedPerson && (
+                <div className="details">
+                  <h2>{selectedPerson.name}</h2>
+                  <p>
+                    <strong>Date:</strong> {selectedPerson.date}
+                  </p>
+                  <p>
+                    <strong>Amount:</strong> {selectedPerson.amount}
+                  </p>
+                  <p>
+                    <strong>Campaign:</strong> {selectedPerson.campaign}
+                  </p>
+                  <p>
+                    <strong>Email:</strong> {selectedPerson.email}
+                  </p>
+                </div>
+              )}
+            </div>
+      </div>
           </div>
         </div>
       </div>

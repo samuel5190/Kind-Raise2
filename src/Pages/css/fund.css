@@ -111,6 +111,11 @@
   font-size: 20px;
   font-weight: bold;
   border: none;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: #05CE78;
+  }
 }
 
 .fundRaiseShareBtn {
