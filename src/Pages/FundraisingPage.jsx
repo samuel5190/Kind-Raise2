@@ -8,6 +8,7 @@ import Modal from "../Payment/Modal";
 import Tree from "../assets/Tree.svg";
 import { useNavigate, useParams } from "react-router-dom";
 import ShareModal from "../components/Modal/ShareModal";
+import useLocalStorage from "use-local-storage";
 
 const FundraisingPage = () => {
   const [pay, setPay] = useState(false);
@@ -21,7 +22,7 @@ const FundraisingPage = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [shareModal, setShareModal] = useState(false);
+  const [shareModal, setShareModal] = useLocalStorage(false);
 
   useEffect(() => {
     if (amount.length > 2) {
@@ -77,7 +78,7 @@ const FundraisingPage = () => {
     <div className="fundRaiseBody">
       {
         shareModal?
-        <ShareModal setShareModal={setShareModal}/>:null
+        <ShareModal ev={ev} setShareModal={setShareModal}/>:null
       }
       {pay ? (
         <Modal

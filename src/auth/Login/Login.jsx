@@ -5,10 +5,12 @@ import { BsEye, BsEyeSlash } from "react-icons/bs";
 import logo from '../../assets/logo.svg';
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
   const Nav = useNavigate();
   const [show, setShow] = useState(true);
+  const dispatch = useDispatch()
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -26,6 +28,16 @@ const Login = () => {
       })
     }
   }
+
+  // const handleLogin = async () => {  
+  //   // Perform login logic here and assume you get user & token  
+  //   const user = { id: 1, name: 'John Doe' }; // Example user object  
+  //   const token = 'some-auth-token'; // Example token  
+
+  //   // Dispatch actions to store in Redux  
+  //   dispatch(addUser(user));  
+  //   dispatch(userToken(token));  
+  // }
 
   return (
     <>
@@ -58,7 +70,7 @@ const Login = () => {
               </div>
             </div>
             <div className="forgetPassword">Forget password</div>
-            <button className="loginBtn" onClick={() => Nav("/passwordchange")}>
+            <button className="loginBtn" onClick={Login}>
               Sign in
             </button>
             <div className="sighUpCreateAcc">

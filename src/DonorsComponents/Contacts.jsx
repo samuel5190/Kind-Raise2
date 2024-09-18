@@ -42,7 +42,7 @@ const Contacts = () => {
 
     const handleRowClick = (person) => {  
         setSelectedPerson(person);  
-        console.log(selectedPerson)
+        console.log(person);
     };
 
   const {

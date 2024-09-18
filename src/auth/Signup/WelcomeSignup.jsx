@@ -12,7 +12,7 @@ const WelcomeSignup = ({setActiveSignupPage}) => {
     // setLoading(!loading)
     setTimeout(()=>{
       // setLoading(false)
-      // setActiveSignupPage("A")
+      setActiveSignupPage("A")
       Nav('/')
     },3000)
   }

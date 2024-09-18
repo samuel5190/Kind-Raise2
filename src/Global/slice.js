@@ -12,7 +12,7 @@ const appSlice = createSlice({
       state.user = payload
     },
     userToken: (state, {payload})=>{
-      state.token.push(payload)
+      state.token = payload
     }
   }
 });
